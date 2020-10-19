@@ -81,13 +81,13 @@ public class SpamFilterV2 {
 		// for each file, execute 3 steps as following:
 		public void run() {
 			File workFile = null;
-            while((workFile = spamFilter.pollQueue()) != null) {
-            	String[] inputData = spamFilter.readFile(workFile); // 1. read file
-            	int K = inputData.length-1;
-        		double prob = spamFilter.calBiGramProb(inputData, K); // 2. calculate bi-gram probability
-        		List<Double> pair = Arrays.asList((double)K, prob);
-        		spamFilter.mapPut(pair); // 3. recorded into resultMap and print out result
-        	}
+			while((workFile = spamFilter.pollQueue()) != null) {
+				String[] inputData = spamFilter.readFile(workFile); // 1. read file
+				int K = inputData.length-1;
+				double prob = spamFilter.calBiGramProb(inputData, K); // 2. calculate bi-gram probability
+				List<Double> pair = Arrays.asList((double)K, prob);
+				spamFilter.mapPut(pair); // 3. recorded into resultMap and print out result
+			}
 		}
 	}
 	
